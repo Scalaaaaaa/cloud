@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+## actuator
+management:
+  endpoints:
+    web.exposure.include: "*"
+logging:
+  level:
+    root: debug
+  file:
+    path: /var/log
+    name: auth.log

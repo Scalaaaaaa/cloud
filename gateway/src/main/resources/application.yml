@@ -1,0 +1,31 @@
+server:
+  port: 8082
+
+## gateway
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: api
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/**
+          filters:
+            - StripPrefix=1
+        - id: auth
+          uri: http://localhost:8081
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:8081/rsa/public'
+logging:
+  level:
+    root: debug
+  file:
+    path: /var/log
+    name: gateway.log
