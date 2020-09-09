@@ -1,0 +1,151 @@
+{
+	"variables": [],
+	"info": {
+		"name": "elasticsearch",
+		"_postman_id": "1e6aba99-aeb8-42f3-c3e9-c47a947848c7",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "index",
+			"request": {
+				"url": "http://localhost:8080/product",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "3333",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "机械革命 code 01",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "owner",
+							"value": "清华同方",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "5699",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "查询elasticsearch",
+			"request": {
+				"url": "http://localhost:9200/test/product/_search",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "post无参数",
+			"request": {
+				"url": "http://localhost:8080/addProduct",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "单个删除",
+			"request": {
+				"url": "http://localhost:9200/test/product/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "apiSearch",
+			"request": {
+				"url": "http://localhost:8080/product/search",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "111",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "zhangsan lisi wangwu",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "owner",
+							"value": "zhaoliu",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "44.55",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "pageNumber",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "pageSize",
+							"value": "12",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "apiDelete",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -21,8 +21,8 @@ public class ResourceServerConfig {
      */
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http){
-        // 虽然这里只开放了 /actuator/**  但是，实际上，/auth/××的也开放了。至少/auth/token的开放了，代测试其他的是否开放
-        http.authorizeExchange()
+        // 这里只开放了 /actuator/** ,  /auth/token接口，用来获取token的，是直接访问的认证服务器，而没有通过gateway转发
+        http.csrf().disable().authorizeExchange()
                 .pathMatchers("/actuator/**").permitAll()
                 // 如果是细节的判断，则代码是.anyExchange().access(authorizationManager)
                 // 下面的.anyExchange().authenticated()表示  只要jwt认证通过，则有权限访问所有资源（接口）
@@ -33,6 +33,7 @@ public class ResourceServerConfig {
         // 简单理解，jwt就是在你登陆的时候给你一个令牌，请求资源时带上令牌  后台就能判断你是你
         // oauth2就是  根据jwt令牌里的附加信息（比如角色）来判断你有没有权限访问该资源
         http.oauth2ResourceServer().jwt();
+        http.oauth2Login();
         return http.build();
     }
 }

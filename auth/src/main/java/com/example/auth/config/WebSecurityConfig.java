@@ -22,6 +22,7 @@ import java.util.Collection;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Override
     @Bean
     protected AuthenticationManager authenticationManager() throws Exception {

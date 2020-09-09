@@ -5,4 +5,13 @@ logging:
     root: debug
   file:
     path: /var/log
-    name: gateway.log
+    name: api.log
+
+spring:
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+  elasticsearch:
+    rest:
+      uris: 127.0.0.1:9200
