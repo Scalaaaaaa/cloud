@@ -37,7 +37,7 @@ import java.util.Random;
 
 @RestController
 @Slf4j
-public class TestController {
+public class TestElasticsearchController {
     /*@Autowired
     ElasticsearchTemplate template;*/
     @Autowired

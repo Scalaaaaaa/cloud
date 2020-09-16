@@ -1,38 +1,23 @@
-server:
-  port: 8060
-logging:
-  level:
-    root: info
-  file:
-    path: /var/log
-    name: api.log
+
 spring:
+  application:
+    name: product-module
   zipkin:
     base-url: http://localhost:9411
     #取样率 1.0表示百分之百的取样率
-  sleuth:
-    sampler:
-      percentage: 1.0
-  data:
-    elasticsearch:
-      repositories:
-        enabled: true
-  elasticsearch:
-    rest:
-      uris: 127.0.0.1:9200
-  application:
-    name: api-module
-  cloud:
-    inetutils:
-      ignored-interfaces: docker0
-      preferred-networks: eno0
+    sleuth:
+      sampler:
+        percentage: 1.0
+server:
+  port: 8070
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-
+logging:
+  level:
+    root: info
 #dubbo
-
 dubbo:
   protocol:
     host: 192.168.1.2
@@ -48,4 +33,3 @@ dubbo:
     filter: tracing
   consumer:
     filter: tracing
-

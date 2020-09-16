@@ -18,6 +18,7 @@ public class TestAspect {
 
     @Around("beforeControllerEndpoint()")
     public void doLogController(ProceedingJoinPoint joinPoint)  throws Throwable {
+        log.info("=====inAop===========");
         Object[] args = joinPoint.getArgs();
         if(args != null && args.length > 0){
             log.info(joinPoint.getKind()+"-"+joinPoint.getTarget()+"-"+ JSON.toJSONString(args)+
@@ -25,6 +26,7 @@ public class TestAspect {
         }
         Object result = joinPoint.proceed();
         log.info("result="+JSON.toJSONString(result));
+        log.info("=====afterAop========");
     }
 
 
